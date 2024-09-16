@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Persona extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'Nombres',
+        'Apellidos',
+        'Ci',
+        'Direccion',
+        'Email',
+        'Telefono',
+    ];
     public function empleado()
     {
         return $this->hasOne(Empleado::class);
@@ -17,6 +25,7 @@ class Persona extends Model
         return $this->hasOne(Cliente::class);
     }
     public function users(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
+//        return $this->belongsToMany(User::class);
     }
 }

@@ -13,7 +13,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        $clientes = Cliente::all();
+        return view('cliente.index',compact('clientes'));
     }
 
     /**
@@ -21,7 +22,8 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        $personas = Cliente::all();
+        return view('cliente.create',compact('personas'));
     }
 
     /**
@@ -29,7 +31,9 @@ class ClienteController extends Controller
      */
     public function store(StoreClienteRequest $request)
     {
-        //
+        $datosCliente = request()->except('_token');
+        Cliente::insert($datosCliente);
+        return redirect()->route('cliente.index')->withErrors($request->messages());
     }
 
     /**
@@ -45,15 +49,18 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        //
+        $cliente = Cliente::findOrFail($cliente['id']);
+        return view('cliente.edit',compact('cliente'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateClienteRequest $request, Cliente $cliente)
+    public function update(UpdateClienteRequest $request, $id)
     {
-        //
+        $datosCliente = request()->except(['_token','_method']);
+        Cliente::where('id','=',$id)->update($datosCliente);
+        return redirect()->route('cliente.index');
     }
 
     /**
@@ -61,6 +68,9 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
-        //
+        $cliente = Cliente::findOrFail($cliente['id']);
+        $cliente->delete();
+        return redirect()->route('cliente.index');
+
     }
 }

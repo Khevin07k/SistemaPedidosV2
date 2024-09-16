@@ -13,8 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-//        $usuario=User::all();
-        $usuario = User::with('Cliente')->get();
+        $usuario=User::all();
+//        $usuario = User::with('Cliente')->get();
         return view('usuario.index',compact('usuario'));
     }
 

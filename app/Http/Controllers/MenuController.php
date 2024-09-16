@@ -88,4 +88,8 @@ class MenuController extends Controller
         $menu->delete();
         return redirect()->route('menu.index');
     }
+    public function listarMenu()
+    {
+        return menu::all();
+    }
 }

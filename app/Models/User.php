@@ -24,9 +24,9 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-    public function personas()
+    public function persona()
     {
-        return $this->belongsToMany(Persona::class);
+        return $this->hasMany(Persona::class);
     }
     /**
      * The attributes that should be hidden for serialization.

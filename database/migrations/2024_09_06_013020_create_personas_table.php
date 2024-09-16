@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("Direccion");
             $table->string("Email",50);
             $table->string("Telefono",20);
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

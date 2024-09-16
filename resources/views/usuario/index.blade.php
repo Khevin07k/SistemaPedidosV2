@@ -16,7 +16,7 @@
             <th scope="col">Email</th>
         </tr>
         </thead>
-        {{print_r($usuario)}}
+{{--        {{print_r($usuario)}}--}}
         <tbody class="table-group-divider">
         @foreach($usuario as $user)
             <tr>

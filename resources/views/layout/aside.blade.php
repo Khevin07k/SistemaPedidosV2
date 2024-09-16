@@ -51,9 +51,15 @@
                                 <p>Restaurante</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('persona.index')}}" class="nav-link ">
+                                <i class="nav-icon far fa-circle"></i>
+                                <p>Persona</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
-                <li class="nav-item ">
+                {{--<li class="nav-item ">
                     <a href="javascript:;" class="nav-link ">
                         <i class="nav-icon fas fa-circle"></i>
                         <p>
@@ -82,7 +88,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li class="nav-item ">
                     <a href="javascript:;" class="nav-link ">
                         <i class="nav-icon fas fa-circle"></i>
@@ -134,8 +139,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-header">MULTI LEVEL EXAMPLE</li>
+                </li>--}}
             </ul>
         </nav>
     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Persona;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -36,8 +37,8 @@ class LoginController extends Controller
                 'email' => $request->Email,
                 'password' => Hash::make($request->password)
             ]);
-            die($user->personas);
-            $personas = $users->personas->create([
+//            die($user->personas);
+            $personas = $user->persona()->create([
                 'Nombres' => $request->Nombres,
                 'Apellidos' => $request->Apellidos,
                 'Ci' => $request->Ci,
@@ -45,17 +46,17 @@ class LoginController extends Controller
                 'Email' => $request->Email,
                 'Telefono' => $request->Telefono,
             ]);
-            die($personas);
-            $cliente = $persona->cliente()->create([
+//            die($personas);
+            $cliente = $personas->cliente()->create([
                 'Nit' => $request->Nit,
             ]);
-            dd($cliente);
+//            dd($cliente);
             DB::commit();
             return redirect()->route('index');
         }catch (\Exception $e){
             DB::rollBack();
 //            $e->getMessage();
-            die($e->getMessage());
+//            die($e->getMessage());
             return redirect()->route('register');
         }
 

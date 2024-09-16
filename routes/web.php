@@ -8,6 +8,7 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\RestauranteController;
 use App\Http\Controllers\UserController;
+use App\Models\Cliente;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('/',HomeController::class);
@@ -24,3 +25,10 @@ Route::view('register','usuario.register')->name('register');
 Route::post('/Agregar',[LoginController::class,'register'])->name('Agregar');
 
 Route::resource('/persona',PersonaController::class);
+Route::resource('/cliente',Cliente::class);
+
+Route::get('/pedidos',function (){
+    return view('pedido.spa');
+});
+
+Route::get('/listarMenu',[MenuController::class,"listarMenu"]);
