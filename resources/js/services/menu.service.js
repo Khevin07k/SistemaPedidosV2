@@ -1,22 +1,19 @@
 import { Api } from "./Api.Service";
 
 export default {
-    list: () => {
+    listar: () => {
         return Api().get("/listarMenu");
     },
-    /*listAll: () => {
-        return Api().get("/allmenu");
+    guardar: (datos) => {
+        return Api().post("/menu/", datos);
     },
-    store: (dat) => {
-        return Api().post("/menu", dat);
+    mostrar: (id) => {
+        return Api().get("/menu/"+id);
     },
-    showList: (id) => {
-        return Api().get(/menu/${id});
+    update: (id, datos) => {
+        return Api().put("/menu/"+id, datos);
     },
-    update: (id, dat) => {
-        return Api().put(/menu/${id}, dat);
+    eliminar: (id) => {
+        return Api().delete("/menu/"+id);
     },
-    destroy: (id) => {
-        return Api().delete(/menu/${id});
-    },*/
 };

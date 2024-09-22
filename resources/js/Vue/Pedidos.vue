@@ -13,7 +13,7 @@ onMounted(() => {
 });
 
 async function getListar() {
-    const {data} = await servicesMenu.list();
+    const {data} = await servicesMenu.listar();
     menus.value = data;
     console.log(data);
 }

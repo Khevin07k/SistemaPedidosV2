@@ -44,20 +44,12 @@ class EmpleadoController extends Controller
                 'Telefono' => $request->Telefono,
             ]);
 
-
-
-
-
-            $year = date('Y', strtotime($datosEmpleado['FechaContratacion']));
-            $mes = date('m', strtotime($datosEmpleado['FechaContratacion']));
-            $day = date('d', strtotime($datosEmpleado['FechaContratacion']));
+            $year = date('Y', strtotime($request->FechaContratacion));
+            $mes = date('m', strtotime($request->FechaContratacion));
+            $day = date('d', strtotime($request->FechaContratacion));
             $datosEmpleado['FechaContratacion'] = "$year-$mes-$day";
         } catch (\Exception $e) {
         }
-        //        die($request->FechaContratacion);
-
-
-//        dd($datosEmpleado);
         Empleado::insert($datosEmpleado);
         return redirect()->route('empleado.index')->withErrors($request->messages());
     }
