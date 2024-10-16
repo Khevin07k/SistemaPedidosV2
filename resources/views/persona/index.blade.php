@@ -3,7 +3,7 @@
         Persona
     </x-slot>
     <x-slot name="titleContent">
-        Reporte
+        Personas
     </x-slot>
 <a href="{{route('persona.create')}}" class="btn btn-primary" role="button">Nuevo Empleado</a>
 <br>

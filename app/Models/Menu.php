@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class menu extends Model
 {
     use HasFactory;
+    public function pedidos(){
+        return $this->belongsToMany(Pedido::class);
+    }
 }

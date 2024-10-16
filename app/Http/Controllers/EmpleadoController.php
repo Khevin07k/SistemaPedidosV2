@@ -7,6 +7,10 @@ use App\Http\Requests\StoreEmpleadoRequest;
 use App\Http\Requests\UpdateEmpleadoRequest;
 use App\Models\Persona;
 use App\Models\Restaurante;
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class EmpleadoController extends Controller
 {
@@ -34,8 +38,24 @@ class EmpleadoController extends Controller
      */
     public function store(StoreEmpleadoRequest $request)
     {
+        //              Meneja el tema de la fecha de contratacion del empleado
+        /*$year = date('Y', strtotime($request->FechaContratacion));
+        $mes = date('m', strtotime($request->FechaContratacion));
+        $day = date('d', strtotime($request->FechaContratacion));
+        $datosEmpleado['FechaContratacion'] = "$year-$mes-$day";*/
+
+        $fechaContratacion = Carbon::parse($request->FechaContratacion);
+        $datosEmpleado['FechaContratacion'] = $fechaContratacion->format('Y-m-d');
+//        Llega hasta aqui
+//        dd($request->restaurante_id);
+        DB::beginTransaction();
         try {
-            $persona = Persona::create([
+            $user= User::create([
+                'name' => $request->Nombres,
+                'email' => $request->Email,
+                'password' => Hash::make($request->password)
+            ]);
+            $personas = $user->persona()->create([
                 'Nombres' => $request->Nombres,
                 'Apellidos' => $request->Apellidos,
                 'Ci' => $request->Ci,
@@ -44,14 +64,19 @@ class EmpleadoController extends Controller
                 'Telefono' => $request->Telefono,
             ]);
 
-            $year = date('Y', strtotime($request->FechaContratacion));
-            $mes = date('m', strtotime($request->FechaContratacion));
-            $day = date('d', strtotime($request->FechaContratacion));
-            $datosEmpleado['FechaContratacion'] = "$year-$mes-$day";
-        } catch (\Exception $e) {
+            $empleado = $personas->empleado()->create([
+                'FechaContratacion' => $datosEmpleado['FechaContratacion'],
+                'Puesto' => $request->Puesto,
+                'Salario' => $request->Salario,
+                'restaurante_id' => $request->restaurante_id,
+            ]);
+            DB::commit();
+            return redirect()->route('empleado.index');
+        }catch (\Exception $e){
+            DB::rollBack();
+            dd($e->getMessage());
+            return redirect()->route('empleado.create');
         }
-        Empleado::insert($datosEmpleado);
-        return redirect()->route('empleado.index')->withErrors($request->messages());
     }
 
     /**

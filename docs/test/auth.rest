@@ -1,0 +1,24 @@
+POST http://127.0.0.1:8000/api/register
+Accept: application/json
+Content-Type: application/json
+
+{
+    "Nombres": "Kevin",
+    "Apellidos": "Mamani",
+    "Nit": "7089005",
+    "Ci": "7089005",
+    "Direccion": "Integracion",
+    "Email": "ejemplo@mail.com",
+    "Telefono": "70200588",
+    "password": "123456",
+    "password_confirmation": "123456"
+}
+
+### Iniciar Session
+POST http://127.0.0.1:8000/api/login
+Accept: application/json
+Content-Type: application/json
+
+{   "email": "ejemplo@mail.com",
+    "password": "123456"
+}

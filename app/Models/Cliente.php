@@ -13,12 +13,13 @@ class Cliente extends Model
         'Nit',
     ];
 
+    public function pedido(){
+        return $this->hasMany(Pedido::class);
+    }
+
     public function persona()
     {
         return $this->belongsTo(Persona::class);
-    }
-    public function pedido(){
-        return $this->hasMany(Pedido::class);
     }
 
 

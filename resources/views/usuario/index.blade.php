@@ -3,7 +3,7 @@
         Usuario
     </x-slot>
     <x-slot name="titleContent">
-        Listado
+        Usuarios
     </x-slot>
     <a href="{{ route('usuario.create') }}" class="btn btn-primary" role="button">Nuevo Restaurante</a>
     <br>

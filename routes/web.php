@@ -11,6 +11,8 @@ use App\Http\Controllers\UserController;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Route;
 
+
+/*Administracion*/
 Route::resource('/',HomeController::class);
 Route::resource('/restaurante',RestauranteController::class);
 Route::resource('/empleado',EmpleadoController::class);
@@ -23,12 +25,17 @@ Route::view('register','usuario.register')->name('register');
 //Route::post('/login',[LoginController::class,'login']);
 //Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 Route::post('/Agregar',[LoginController::class,'register'])->name('Agregar');
-
 Route::resource('/persona',PersonaController::class);
 Route::resource('/cliente',Cliente::class);
 
-Route::get('/pedidos',function (){
-    return view('pedido.spa');
+
+/*Usuario*/
+
+Route::get('/Res',function (){
+    return view('pedido.platos');
+});
+Route::get('/platos/{param}',function ($param){
+    return view('pedido.platos',compact('param'));
 });
 
 Route::get('/listarMenu',[MenuController::class,"listarMenu"]);

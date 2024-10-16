@@ -6,7 +6,7 @@
     <!-- icheck bootstrap -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
-    <title>AdminLTE 4 | General Form Elements</title>
+    <title>Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="AdminLTE 4 | General Form Elements">
     <meta name="author" content="ColorlibHQ">
@@ -49,7 +49,7 @@
     <!-- /.login-logo -->
     <div class="card  rounded">
         <div class="card-body login-card-body ">
-            <p class="login-box-msg">Crea tu cuenta</p>
+            <p class="login-box-msg">Registra tu cuenta</p>
 
             <form action="{{ route('Agregar') }}" method="post">
                 @csrf

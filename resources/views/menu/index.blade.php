@@ -3,7 +3,7 @@
         SiSAdmin
     </x-slot>
     <x-slot name="titleContent">
-        Home
+        Listado de Menus
     </x-slot>
 <a href="{{ route('menu.create') }}" class="btn btn-primary" role="button">Nuevo Menu</a>
 {{--    <div class="text-bg-danger">Nesecitas iniciar seccion para agregar menus</div>--}}

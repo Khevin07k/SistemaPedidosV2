@@ -12,4 +12,7 @@ class Pedido extends Model
     {
         return $this->belongsTo(Cliente::class);
     }
+    public function menus(){
+        return $this->belongsToMany(Menu::class)->withPivot('Cantidad','Total');
+    }
 }

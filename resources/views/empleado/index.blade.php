@@ -3,7 +3,7 @@
         Empleado
     </x-slot>
     <x-slot name="titleContent">
-        Reporte
+        Empleados
     </x-slot>
 <a href="{{route('empleado.create')}}" class="btn btn-primary" role="button">Nuevo Empleado</a>
 <br>
@@ -12,28 +12,22 @@
     <thead>
     <tr>
         <th scope="col">Nº</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellido</th>
-        <th scope="col">Ci</th>
-        <th scope="col">Telefono</th>
         <th scope="col">Fecha De Contratacion</th>
         <th scope="col">Puesto</th>
-        <th scope="col">Email</th>
+        <th scope="col">Salario</th>
         <th scope="col">Restaurante</th>
+        <th scope="col">Persona</th>
     </tr>
     </thead>
     <tbody class="table-group-divider">
     @foreach($empleados as $empleado)
         <tr>
             <th scope="row">{{$empleado->id}}</th>
-            <td>{{$empleado->Nombre}}</td>
-            <td>{{$empleado->Apellido}}</td>
-            <td>{{$empleado->Ci}}</td>
-            <td>{{$empleado->Telefono}}</td>
             <td>{{$empleado->FechaContratacion}}</td>
             <td>{{$empleado->Puesto}}</td>
-            <td>{{$empleado->Email}}</td>
+            <td>{{$empleado->Salario}}</td>
             <td>{{$empleado->restaurante->Nombre}}</td>
+            <td>{{$empleado->persona->Nombres}}</td>
 
             <td>
                 <div class="mb-3">
