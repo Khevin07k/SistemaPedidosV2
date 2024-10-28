@@ -72,7 +72,11 @@ class authController extends Controller
                 Response::HTTP_UNAUTHORIZED
             );
         } else {
+            //  = $res->get('persona');
             $user = Auth::user();
+            if ($user) {
+                $user = User::with('persona')->find($user->id); // Cargar la relación 'persona' usando 'with'
+            }
             $token = $request->user()->createToken("token")->plainTextToken;
 //            $cookie = cookie('cookie_token', $token, 30 * 24);
             return  response([

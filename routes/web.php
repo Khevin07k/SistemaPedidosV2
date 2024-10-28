@@ -27,7 +27,7 @@ Route::view('register','usuario.register')->name('register');
 Route::post('/Agregar',[LoginController::class,'register'])->name('Agregar');
 Route::resource('/persona',PersonaController::class);
 Route::resource('/cliente',Cliente::class);
-
+Route::resource('/pedido', PedidoController::class);
 
 /*Usuario*/
 

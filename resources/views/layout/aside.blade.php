@@ -57,6 +57,12 @@
                                 <p>Persona</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('pedido.index')}}" class="nav-link ">
+                                <i class="nav-icon far fa-circle"></i>
+                                <p>Pedido</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 {{--<li class="nav-item ">

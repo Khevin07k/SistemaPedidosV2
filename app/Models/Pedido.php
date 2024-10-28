@@ -12,7 +12,10 @@ class Pedido extends Model
     {
         return $this->belongsTo(Cliente::class);
     }
-    public function menus(){
-        return $this->belongsToMany(Menu::class)->withPivot('Cantidad','Total');
+    // Definir la relación con Menu
+    public function menus()
+    {
+        return $this->belongsToMany(Menu::class, 'menu_pedido')
+                    ->withPivot('Cantidad', 'Total'); // Si necesitas almacenar más datos en la tabla pivot
     }
 }

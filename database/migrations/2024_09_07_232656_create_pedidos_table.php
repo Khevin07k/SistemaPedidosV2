@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->integer("NumeroPedido");
-            $table->date("Fecha");
-            $table->enum("EstadoPedido", ["En proceso", "Finalizado", "Cancelado"]);
+            $table->date("Fecha")->useCurrent();
+            $table->enum("EstadoPedido", ["En proceso", "Finalizado", "Cancelado"])->default("En Proceso");
             $table->string("Observacion");
+            $table->decimal("TotalPagar", 10, 2); // Cambiar de deciaml a decimal
             $table->foreignId("cliente_id")->constrained()->references("id")->on("clientes");
             $table->timestamps();
         });

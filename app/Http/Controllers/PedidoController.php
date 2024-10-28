@@ -13,7 +13,9 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
+        $pedidos = Pedido::with('menus')->get();
+
+        return view("pedido.index", compact("pedidos"));
     }
 
     /**
@@ -21,7 +23,7 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        //
+        return view("pedido.create");
     }
 
     /**

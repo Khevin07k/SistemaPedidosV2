@@ -17,6 +17,7 @@ return new class extends Migration
             $table->decimal("Total");
             $table->foreignId('menu_id')->constrained()->references('id')->on('menus');
             $table->foreignId('pedido_id')->constrained()->references('id')->on('pedidos');
+            $table->foreignId("empleado_id")->nullable()->constrained()->references("id")->on("empleados");
             $table->timestamps();
         });
     }
