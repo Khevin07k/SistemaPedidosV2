@@ -11,6 +11,7 @@ class Cliente extends Model
     use HasFactory;
     protected $fillable = [
         'Nit',
+        'Nombre',
     ];
 
     public function pedido(){

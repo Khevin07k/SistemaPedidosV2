@@ -115,9 +115,9 @@
                 </div>
             </li>
 
-            <li>
+            {{--<li>
                 <a href="{{route('login')}}" class="btn btn-primary">Login</a>
-            </li>
+            </li>--}}
 
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">

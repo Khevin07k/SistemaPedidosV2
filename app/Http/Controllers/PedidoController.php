@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pedido;
 use App\Http\Requests\StorePedidoRequest;
 use App\Http\Requests\UpdatePedidoRequest;
+use App\Models\Cliente;
 
 class PedidoController extends Controller
 {
@@ -13,8 +14,9 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::with('menus')->get();
-
+        $pedidos = Pedido::with('menus','cliente.persona')->get();
+        //$cliente = Cliente::with('cliente')->get();
+        //dd($pedidos);
         return view("pedido.index", compact("pedidos"));
     }
 
